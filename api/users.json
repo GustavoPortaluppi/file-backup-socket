@@ -1,0 +1,14 @@
+[
+  {
+    "userId": "user1",
+    "email": "user1@email.com",
+    "rootPath": "root/user1",
+    "backupPath": "backup/user1"
+  },
+  {
+    "userId": "user2",
+    "email": "user2@email.com",
+    "rootPath": "root/user2",
+    "backupPath": "backup/user2"
+  }
+]
