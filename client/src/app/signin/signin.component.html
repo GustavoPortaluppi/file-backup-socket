@@ -1,3 +1,15 @@
-<p>signin works!</p>
+<div class="wrapper">
+  <div class="form-signin">
+    <h5 style="margin-bottom: 20px;">Enter user ID to signin</h5>
 
-<h5>Input do user id (simulando login)</h5>
+    <input #userid [(ngModel)]="userId"
+           type="text" class="form-control" name="userid"
+           placeholder="User ID" autofocus=""/>
+
+    <button class="btn btn-primary btn-block" type="button"
+            (click)="signin()"
+            style="margin-top: 20px; margin-bottom: 0;">
+      Signin
+    </button>
+  </div>
+</div>

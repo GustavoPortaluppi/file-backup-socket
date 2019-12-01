@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-async function sendEmail({ to, html }) {
+async function sendEmail({ userId, to, html }) {
   if (!to || !html) {
     return Promise.resolve();
   }
@@ -19,11 +19,11 @@ async function sendEmail({ to, html }) {
   let info = await transporter.sendMail({
     from: process.env.NODEMAILER_USER,
     to,
-    subject: 'Changes',
+    subject: `Changes from ${userId}`,
     html,
   });
 
-  console.log(` > Message sent: ${info.messageId}`);
+  console.log(` > Email with changes from ${userId} sent to ${to}`);
 
   return Promise.resolve();
 }

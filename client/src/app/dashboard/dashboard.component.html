@@ -1,1 +1,20 @@
-<p>dashboard works!</p>
+<div class="container">
+
+  <h6 style="margin-bottom: 20px;">Remote backup list ({{ files?.length }})</h6>
+
+  <span *ngIf="files?.length <= 0"
+        style="font-size: 14px;">Your remote backup list is empty.</span>
+
+  <ul class="list-group" *ngIf="files?.length > 0">
+    <li class="list-group-item" *ngFor="let file of files">
+      <span style="font-size: 14px;">{{ file }}</span>
+
+      <a href="javascript:void(0);" class="float-right" style="font-size: 14px;"
+         (click)="unlinkFile(file)">
+        Remove from root
+      </a>
+
+    </li>
+  </ul>
+
+</div>

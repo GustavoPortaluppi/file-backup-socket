@@ -16,21 +16,21 @@ export class DashboardComponent implements OnInit {
   userId;
   socket;
 
+  files = [];
+
   constructor(private activatedRoute: ActivatedRoute,
               private appService: AppService) {
-    console.log(activatedRoute);
     this.userId = this.activatedRoute.snapshot.queryParams.userId || '1';
 
-    this.socket = io(environment.BASE_URL_SOCKET, { query: JSON.stringify({ userId: this.userId }) });
+    this.socket = io(environment.BASE_URL_SOCKET, { query: { userId: this.userId } });
 
     this.socket.on('CHANGE', (data) => {
-      console.log(data);
-      console.log('> deve buscar na api e atualizar listagem');
+      this.initFilesList();
     });
 
     /* Simulação de ambiente de monitoramento */
     this.socket.on('disconnect', () => {
-      console.log('> deve chamar método na api que envia e-mail notificando indisponibilidade');
+      // TODO chamar método na api que envia e-mail notificando indisponibilidade
     });
   }
 
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
 
   initFilesList() {
     this.appService.getFileList(this.userId).subscribe((res: any) => {
-      console.log(res);
+      this.files = res.files;
     })
   }
 

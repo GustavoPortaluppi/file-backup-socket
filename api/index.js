@@ -47,24 +47,24 @@ async function removeFileBackup({ userId, rootPath, backupPath, path }) {
 
 async function removeFileRoot({ rootPath, path }) {
   try {
-    const targetPath = `${rootPath}${path}`;
+    const targetPath = `${rootPath}/${path}`;
     fs.unlinkSync(targetPath);
   } catch (err) {
     console.error(err);
   }
 }
 
-async function notifyEmail(email) {
+async function notifyEmail(userId, email) {
   if (changes && changes.length > 0) {
     const template = changes.map(x => {
       return `<br>${JSON.stringify(x)}`;
     });
 
-    await sendEmail({ to: email, html: template.join('') });
+    await sendEmail({ userId, to: email, html: template.join('') });
 
     changes = [];
   } else {
-    console.log(' > Nenhuma alteração encontrada.');
+    console.log(' > No changes detected');
   }
 }
 
@@ -117,7 +117,7 @@ io.on('connection', client => {
     });
 
   /* Notificar e-mail a cada 2 minutos caso houveram alterações */
-  setInterval(() => notifyEmail(email), 120000);
+  setInterval(() => notifyEmail(userId, email), 120000);
 
   /* Monitoramento das mensagens do tipo 'UNLINK' enviadas pelo cliente atual. */
   client.on('UNLINK', async (data) => {
@@ -147,7 +147,7 @@ app.get('/:userId', (req, res) => {
 
   const files = fs.readdirSync(backupPath);
 
-  res.status(200).json(files);
+  res.status(200).json({ files });
 });
 
 app.listen(process.env.API_PORT, () => {
