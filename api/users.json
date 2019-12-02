@@ -10,5 +10,9 @@
     "email": "user2@email.com",
     "rootPath": "root/user2",
     "backupPath": "backup/user2"
+  },
+  {
+    "userId": "admin",
+    "email": "admin@email.com"
   }
 ]

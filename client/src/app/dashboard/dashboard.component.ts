@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
 
     /* Simulação de ambiente de monitoramento */
     this.socket.on('disconnect', () => {
-      // TODO chamar método na api que envia e-mail notificando indisponibilidade
+      this.notifyAdmin();
     });
   }
 
@@ -46,6 +46,12 @@ export class DashboardComponent implements OnInit {
 
   unlinkFile(path: string) {
     this.socket.emit('UNLINK', path);
+  }
+
+  notifyAdmin() {
+    this.appService.notifyAdmin().subscribe((res: any) => {
+      console.log(res);
+    });
   }
 
 }
