@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "api": "sudo node server.api.js",
+    "socket": "sudo node server.socket.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
