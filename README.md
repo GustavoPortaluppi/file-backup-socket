@@ -1,6 +1,6 @@
 # File backup with socket.io
 
-Real-time file backup application using [socket.io](https://github.com/socketio/socket.io) e [socket.io-client](https://github.com/socketio/socket.io-client).
+Real-time file backup application using [socket.io](https://github.com/socketio/socket.io) and [socket.io-client](https://github.com/socketio/socket.io-client).
 ### Requisites
 1. Node.js (v10+) environment properly installed and configured
 2. Angular (v8+)
@@ -20,7 +20,7 @@ Real-time file backup application using [socket.io](https://github.com/socketio/
    ```sh
    ~/api$ npm run socket
    ```
-   
+
 ### Use Client
 1. Install deps
    ```sh
