@@ -10,10 +10,10 @@ export class AppService {
   }
 
   getFileList(userId: string) {
-    return this.http.get(`${environment.BASE_URL_API}/${userId}`);
+    return this.http.get(`${environment.BASE_URL_API}/files/${userId}`);
   }
 
   notifyAdmin() {
-    return this.http.post(`${environment.BASE_URL_API}/admin`, null);
+    return this.http.post(`${environment.BASE_URL_API}/emails/admin`, null);
   }
 }

@@ -13,7 +13,7 @@ const users = require('./users');
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/:userId', (req, res) => {
+app.get('/files/:userId', (req, res) => {
   const { userId } = req.params;
   const [{ backupPath }] = users.filter(x => x.userId.toString() === userId.toString());
 
@@ -22,7 +22,7 @@ app.get('/:userId', (req, res) => {
   res.status(200).json({ files });
 });
 
-app.post('/:userId', async (req, res) => {
+app.post('/emails/:userId', async (req, res) => {
   const { userId } = req.params;
   const [{ email }] = users.filter(x => x.userId.toString() === userId.toString());
 
