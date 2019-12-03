@@ -11,7 +11,7 @@ Real-time file backup application using [socket.io](https://github.com/socketio/
    ~/api$ npm i
    ```
 2. Create <code>/api/.env</code> like <code>/api/.env.example</code> with configs
-3. Configure <code>users.json</code>
+3. Configure <code>/api/users.json</code>
 4. Run server API instance
    ```sh
    ~/api$ npm run api
